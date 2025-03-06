@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohel-am <mohel-am@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: 404-amine                                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 22:14:03 by mohel-am          #+#    #+#             */
-/*   Updated: 2024/10/29 14:11:29 by mohel-am         ###   ########.fr       */
+/*   Created: 2025/03/06 16:47:20 by 404-amine        #+#    #+#             */
+/*   Updated: 2025/03/06 16:47:20 by 404-amine       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-static int	ft_isspace(char c)
+long	ft_atoi(const char *str)
 {
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
-}
+	long	result;
+	int		sign;
+	int		i;
 
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	result;
-
-	i = 0;
-	sign = 1;
 	result = 0;
-	while (ft_isspace(str[i]))
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -42,5 +34,26 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (sign * result);
+	return (result * sign);
 }
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}
+
+// int	absolute_value(int nb)
+// {
+// 	if (nb < 0)
+// 		return (-nb);
+// 	return (nb);
+// }

@@ -1,44 +1,49 @@
-# Compiler and flags
-CC      = gcc
-CFLAGS  = -Wall -Wextra -Werror
-AR      = ar rcs
-RM      = rm -f
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: 404-amine                                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/06 16:47:20 by 404-amine        #+#    #+#              #
+#    Updated: 2025/03/06 16:47:20 by 404-amine       ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Directories
-LIBFT_DIR = libft
-INCLUDES  = -Iincludes -I$(LIBFT_DIR)
+NAME = push_swap
 
-# Libft settings
-LIBFT    = $(LIBFT_DIR)/libft.a
-LIBFT_SRCS = $(wildcard $(LIBFT_DIR)/*.c)
-LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
+SRCS = main.c \
+       input_validation.c \
+       push_swap.c \
+       position.c \
+       stack_init.c \
+       stack_utils.c \
+       operations_swap_push.c \
+       operations_rotate.c \
+       operations_reverse_rotate.c \
+       utils.c
 
-# Push_swap settings
-NAME    = push_swap
-SRCS    = srcs/push_swap.c srcs/cmds.c srcs/helpers.c srcs/input_verification.c \
-          srcs/init_stack.c srcs/main.c srcs/small_sort.c srcs/stack_helpers.c
-OBJS    = $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-# Compilation rules
-all: $(LIBFT) $(NAME)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-$(LIBFT): $(LIBFT_OBJS)
-	@make -C $(LIBFT_DIR)
-	@echo "Libft compiled successfully!"
+RM = rm -f
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "Push_swap compiled successfully!"
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-# Cleanup rules
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
 clean:
-	@make clean -C $(LIBFT_DIR)
 	$(RM) $(OBJS)
-	@echo "Cleanup done!"
 
 fclean: clean
-	@make fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME) $(LIBFT)
-	@echo "Full cleanup done!"
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
