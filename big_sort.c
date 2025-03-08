@@ -11,6 +11,11 @@ void	sort_big(t_stack **a, t_stack **b)
 	final_rotate(a);
 }
 
+/*
+    takes the sytack size and both stack every thing is on a b is empty
+    
+*/
+
 static void	push_small_elements(t_stack **a, t_stack **b, int size)
 {
 	int	pushed;

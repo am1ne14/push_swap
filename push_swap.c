@@ -49,13 +49,10 @@ void	get_cost(t_stack **a, t_stack **b)
 	size_b = get_stack_size(tmp_b);
 	while (tmp_b)
 	{
-		// Cost to move to top of B
 		if (tmp_b->pos <= size_b / 2)
 			tmp_b->cost_b = tmp_b->pos;
 		else
 			tmp_b->cost_b = -(size_b - tmp_b->pos);
-		
-		// Cost to move target position to top of A
 		if (tmp_b->target_pos <= size_a / 2)
 			tmp_b->cost_a = tmp_b->target_pos;
 		else
@@ -107,6 +104,7 @@ void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 	finish_rotation(a, b, cost_a, cost_b);
 	pa(a, b, 1);
 }
+
 void	finish_rotation(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
 	while (cost_a > 0)
@@ -131,80 +129,21 @@ void	finish_rotation(t_stack **a, t_stack **b, int cost_a, int cost_b)
 	}
 }
 
-// void	sort_big(t_stack **a, t_stack **b)
-// {
-// 	int	size;
-// 	int	pushed;
-// 	int	i;
-
-// 	size = get_stack_size(*a);
-// 	pushed = 0;
-// 	i = 0;
-// 	while (size > 6 && pushed < size - 3)
-// 	{
-// 		if ((*a)->index <= pushed)
-// 		{
-// 			pb(a, b, 1);
-// 			rb(b, 1);
-// 			pushed++;
-// 		}
-// 		else if ((*a)->index <= pushed + (size / 6))
-// 		{
-// 			pb(a, b, 1);
-// 			pushed++;
-// 		}
-// 		else
-// 			ra(a, 1);
-// 	}
-// 	while (size - pushed > 3)
-// 	{
-// 		pb(a, b, 1);
-// 		pushed++;
-// 	}
-// 	sort_three(a);
-// 	while (*b)
-// 	{
-// 		get_position(a);
-// 		get_position(b);
-// 		get_target_position(a, b);
-// 		get_cost(a, b);
-// 		do_cheapest_move(a, b);
-// 	}
-// 	get_position(a);
-// 	i = get_lowest_index_position(a);
-// 	if (i <= get_stack_size(*a) / 2)
-// 	{
-// 		while (i-- > 0)
-// 			ra(a, 1);
-// 	}
-// 	else
-// 	{
-// 		i = get_stack_size(*a) - i;
-// 		while (i-- > 0)
-// 			rra(a, 1);
-// 	}
-// }
-
-// Sort 3 elements in the stack
 void	sort_three(t_stack **a)
 {
 	int		highest;
 
 	if (is_sorted(*a))
-		return;
-
+		return ;
 	highest = get_highest_index(*a);
-	
 	if ((*a)->index == highest)
 		ra(a, 1);
 	else if ((*a)->next->index == highest)
 		rra(a, 1);
-
 	if ((*a)->index > (*a)->next->index)
 		sa(a, 1);
 }
 
-// Main push_swap function
 void	push_swap(t_stack **a, t_stack **b)
 {
 	int	size;
