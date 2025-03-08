@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: 404-amine                                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/06 16:47:20 by 404-amine        #+#    #+#              #
-#    Updated: 2025/03/06 16:47:20 by 404-amine       ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = push_swap
 
 SRCS = main.c \
@@ -20,8 +8,7 @@ SRCS = main.c \
        stack_utils.c \
        operations_swap_push.c \
        operations_rotate.c \
-       operations_reverse_rotate.c \
-       utils.c
+       operations_reverse_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 

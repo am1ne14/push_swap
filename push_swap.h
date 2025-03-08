@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+#include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -48,7 +49,7 @@ void	get_target_position(t_stack **a, t_stack **b);
 int		get_lowest_index_position(t_stack **stack);
 void	get_cost(t_stack **a, t_stack **b);
 void	do_cheapest_move(t_stack **a, t_stack **b);
-void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
+// void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 
 /* Operations */
 void	sa(t_stack **a, int print);
@@ -73,8 +74,15 @@ void	index_stack(t_stack **stack);
 int		get_highest_index(t_stack *stack);
 
 /* Helper functions */
-long	ft_atoi(const char *str);
-void	ft_putstr_fd(char *s, int fd);
 int		absolute_value(int nb);
+
+
+
+static int	check_splitted_numbers(char **splitted_av);
+void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
+void	finish_rotation(t_stack **a, t_stack **b, int cost_a, int cost_b);
+static void	push_small_elements(t_stack **a, t_stack **b, int size);
+static void	sort_b_stack(t_stack **a, t_stack **b);
+static void	final_rotate(t_stack **a);
 
 #endif

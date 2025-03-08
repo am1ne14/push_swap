@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   position.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: 404-amine                                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 16:42:10 by 404-amine        #+#    #+#             */
-/*   Updated: 2025/03/06 16:42:10 by 404-amine       ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 // Update the position field for all elements in the stack
@@ -60,8 +48,6 @@ static int	get_target(t_stack **a, int b_idx, int target_idx, int target_pos)
 	}
 	if (target_idx != INT_MAX)
 		return (target_pos);
-	
-	// If no element is bigger, find the smallest element
 	tmp_a = *a;
 	while (tmp_a)
 	{

@@ -89,10 +89,9 @@ void	do_cheapest_move(t_stack **a, t_stack **b)
 	do_move(a, b, cost_a, cost_b);
 }
 
-// Execute the rotation operations for the cheapest move
 void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
+
 {
-	// Do rotations that can be done simultaneously
 	while (cost_a > 0 && cost_b > 0)
 	{
 		rr(a, b, 1);
@@ -105,8 +104,11 @@ void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 		cost_a++;
 		cost_b++;
 	}
-	
-	// Do remaining rotations
+	finish_rotation(a, b, cost_a, cost_b);
+	pa(a, b, 1);
+}
+void	finish_rotation(t_stack **a, t_stack **b, int cost_a, int cost_b)
+{
 	while (cost_a > 0)
 	{
 		ra(a, 1);
@@ -127,72 +129,61 @@ void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 		rrb(b, 1);
 		cost_b++;
 	}
-	pa(a, b, 1);
 }
 
-// Main sorting function for large arrays
-void	sort_big(t_stack **a, t_stack **b)
-{
-	int	size;
-	int	pushed;
-	int	i;
+// void	sort_big(t_stack **a, t_stack **b)
+// {
+// 	int	size;
+// 	int	pushed;
+// 	int	i;
 
-	size = get_stack_size(*a);
-	pushed = 0;
-	i = 0;
-	
-	// Push all elements except 3 to stack B
-	while (size > 6 && pushed < size - 3)
-	{
-		if ((*a)->index <= pushed)
-		{
-			pb(a, b, 1);
-			rb(b, 1);
-			pushed++;
-		}
-		else if ((*a)->index <= pushed + (size / 6))
-		{
-			pb(a, b, 1);
-			pushed++;
-		}
-		else
-			ra(a, 1);
-	}
-	// Push remaining elements except 3
-	while (size - pushed > 3)
-	{
-		pb(a, b, 1);
-		pushed++;
-	}
-	
-	// Sort remaining 3 elements in stack A
-	sort_three(a);
-	
-	// Calculate position and cost for each element
-	while (*b)
-	{
-		get_position(a);
-		get_position(b);
-		get_target_position(a, b);
-		get_cost(a, b);
-		do_cheapest_move(a, b);
-	}
-	
-	// Rotate stack A to put the smallest element at the top
-	get_position(a);
-	i = get_lowest_index_position(a);
-	if (i <= get_stack_size(*a) / 2)
-	{
-		while (i-- > 0)
-			ra(a, 1);
-	}
-	else
-	{
-		i = get_stack_size(*a) - i;
-		while (i-- > 0)
-			rra(a, 1);
-	}
-}
+// 	size = get_stack_size(*a);
+// 	pushed = 0;
+// 	i = 0;
+// 	while (size > 6 && pushed < size - 3)
+// 	{
+// 		if ((*a)->index <= pushed)
+// 		{
+// 			pb(a, b, 1);
+// 			rb(b, 1);
+// 			pushed++;
+// 		}
+// 		else if ((*a)->index <= pushed + (size / 6))
+// 		{
+// 			pb(a, b, 1);
+// 			pushed++;
+// 		}
+// 		else
+// 			ra(a, 1);
+// 	}
+// 	while (size - pushed > 3)
+// 	{
+// 		pb(a, b, 1);
+// 		pushed++;
+// 	}
+// 	sort_three(a);
+// 	while (*b)
+// 	{
+// 		get_position(a);
+// 		get_position(b);
+// 		get_target_position(a, b);
+// 		get_cost(a, b);
+// 		do_cheapest_move(a, b);
+// 	}
+// 	get_position(a);
+// 	i = get_lowest_index_position(a);
+// 	if (i <= get_stack_size(*a) / 2)
+// 	{
+// 		while (i-- > 0)
+// 			ra(a, 1);
+// 	}
+// 	else
+// 	{
+// 		i = get_stack_size(*a) - i;
+// 		while (i-- > 0)
+// 			rra(a, 1);
+// 	}
+// }
 
 // Sort 3 elements in the stack
 void	sort_three(t_stack **a)
@@ -219,8 +210,6 @@ void	push_swap(t_stack **a, t_stack **b)
 	int	size;
 
 	size = get_stack_size(*a);
-	if (is_sorted(*a))
-		return;
 	if (size == 2)
 		sa(a, 1);
 	else if (size == 3)

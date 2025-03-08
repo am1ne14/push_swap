@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: 404-amine                                  +#+  +:+       +#+        */
+/*   By: mohel-am <mohel-am@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 16:47:20 by 404-amine        #+#    #+#             */
-/*   Updated: 2025/03/06 16:47:20 by 404-amine       ###   ########.fr       */
+/*   Created: 2024/10/23 22:14:03 by mohel-am          #+#    #+#             */
+/*   Updated: 2024/10/29 14:11:29 by mohel-am         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long	ft_atoi(const char *str)
+static int	ft_isspace(char c)
 {
-	long	result;
-	int		sign;
-	int		i;
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
 
-	result = 0;
-	sign = 1;
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	result;
+
 	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	sign = 1;
+	result = 0;
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -34,26 +42,5 @@ long	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-	return (result * sign);
+	return (sign * result);
 }
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-}
-
-// int	absolute_value(int nb)
-// {
-// 	if (nb < 0)
-// 		return (-nb);
-// 	return (nb);
-// }
