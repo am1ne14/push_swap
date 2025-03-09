@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 // Update the position field for all elements in the stack
 void	get_position(t_stack **stack)

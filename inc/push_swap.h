@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: 404-amine                                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 16:48:38 by 404-amine        #+#    #+#             */
-/*   Updated: 2025/03/06 16:48:38 by 404-amine       ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 typedef struct s_stack
 {
@@ -29,29 +17,20 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-/* Input validation */
+
 int		check_input(char **av);
 void	exit_error(void);
-
-/* Stack operations */
 t_stack	*init_stack(int ac, char **av);
 void	free_stack(t_stack *stack);
 int		is_sorted(t_stack *stack);
-
-/* Algorithm */
 void	push_swap(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_big(t_stack **a, t_stack **b);
-
-/* Position */
 void	get_position(t_stack **stack);
 void	get_target_position(t_stack **a, t_stack **b);
 int		get_lowest_index_position(t_stack **stack);
 void	get_cost(t_stack **a, t_stack **b);
 void	do_cheapest_move(t_stack **a, t_stack **b);
-// void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
-
-/* Operations */
 void	sa(t_stack **a, int print);
 void	sb(t_stack **b, int print);
 void	ss(t_stack **a, t_stack **b, int print);
@@ -63,8 +42,6 @@ void	rr(t_stack **a, t_stack **b, int print);
 void	rra(t_stack **a, int print);
 void	rrb(t_stack **b, int print);
 void	rrr(t_stack **a, t_stack **b, int print);
-
-/* Stack utility functions */
 void	add_to_stack(t_stack **stack, t_stack *new);
 t_stack	*create_new_node(int value);
 int		get_stack_size(t_stack *stack);
@@ -72,17 +49,12 @@ t_stack	*get_stack_bottom(t_stack *stack);
 t_stack	*get_stack_before_bottom(t_stack *stack);
 void	index_stack(t_stack **stack);
 int		get_highest_index(t_stack *stack);
-
-/* Helper functions */
 int		absolute_value(int nb);
-
-
-
-static int	check_splitted_numbers(char **splitted_av);
+int	check_splitted_numbers(char **splitted_av);
 void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b);
 void	finish_rotation(t_stack **a, t_stack **b, int cost_a, int cost_b);
-static void	push_small_elements(t_stack **a, t_stack **b, int size);
-static void	sort_b_stack(t_stack **a, t_stack **b);
-static void	final_rotate(t_stack **a);
+void	push_small_elements(t_stack **a, t_stack **b, int size);
+void	sort_b_stack(t_stack **a, t_stack **b);
+void	final_rotate(t_stack **a);
 
 #endif

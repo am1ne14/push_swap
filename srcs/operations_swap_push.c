@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 // Swap the first two elements of stack
 void	sa(t_stack **a, int print)

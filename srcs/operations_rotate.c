@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 // Rotate: shift all elements up, first element becomes the last
 void	ra(t_stack **a, int print)

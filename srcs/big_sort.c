@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	sort_big(t_stack **a, t_stack **b)
 {
@@ -12,11 +12,11 @@ void	sort_big(t_stack **a, t_stack **b)
 }
 
 /*
-    takes the sytack size and both stack every thing is on a b is empty
+    takes the stack size and both stack every thing is on a, b is empty
     
 */
 
-static void	push_small_elements(t_stack **a, t_stack **b, int size)
+void	push_small_elements(t_stack **a, t_stack **b, int size)
 {
 	int	pushed;
 
@@ -44,7 +44,7 @@ static void	push_small_elements(t_stack **a, t_stack **b, int size)
 	}
 }
 
-static void	sort_b_stack(t_stack **a, t_stack **b)
+void	sort_b_stack(t_stack **a, t_stack **b)
 {
 	while (*b)
 	{
@@ -56,7 +56,7 @@ static void	sort_b_stack(t_stack **a, t_stack **b)
 	}
 }
 
-static void	final_rotate(t_stack **a)
+void	final_rotate(t_stack **a)
 {
 	int	i;
 

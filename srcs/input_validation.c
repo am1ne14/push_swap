@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static int	is_number(char *str)
 {
@@ -52,7 +52,7 @@ static int	check_int_range(char *str)
 	return (1);
 }
 
-static int	check_splitted_numbers(char **splitted_av)
+int	check_splitted_numbers(char **splitted_av)
 {
 	int	j;
 
