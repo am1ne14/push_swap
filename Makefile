@@ -37,7 +37,7 @@ clean:
 	@make -s clean -C $(LIBFT_DIR)
 	@$(RM) $(OBJS)
 
-fclean:
+fclean: clean
 	@make -s clean -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
 
