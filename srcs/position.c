@@ -77,11 +77,3 @@ void	get_target_position(t_stack **a, t_stack **b)
 		tmp_b = tmp_b->next;
 	}
 }
-
-// Utility function for absolute value
-int	absolute_value(int nb)
-{
-	if (nb < 0)
-		return (nb * -1);
-	return (nb);
-}

@@ -89,9 +89,3 @@ int	check_input(char **av)
 		return (0);
 	return (1);
 }
-
-void	exit_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}

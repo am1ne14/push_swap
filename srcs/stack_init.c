@@ -40,24 +40,22 @@ t_stack	*init_stack(int ac, char **av)
 	t_stack	*new;
 	char	**splitted_av;
 	int		i;
-	int		j;
 
 	stack = NULL;
 	i = 1;
 	while (i < ac)
 	{
 		splitted_av = ft_split(av[i], ' ');
-		j = 0;
-		while (splitted_av[j])
+		while (*splitted_av)
 		{
-			new = create_new_node((int)ft_atoi(splitted_av[j]));
+			new = create_new_node((int)ft_atoi(*splitted_av));
 			if (!new)
 			{
 				free_stack(stack);
 				exit_error();
 			}
 			add_to_stack(&stack, new);
-			j++;
+			splitted_av++;
 		}
 		free(splitted_av);
 		i++;
