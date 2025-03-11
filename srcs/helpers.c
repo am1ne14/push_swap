@@ -45,3 +45,9 @@ int	absolute_value(int nb)
 		return (nb * -1);
 	return (nb);
 }
+
+void	exit_error(void)
+{
+	write(2,"Error\n",6);
+	exit(EXIT_FAILURE);
+}

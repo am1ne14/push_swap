@@ -32,9 +32,13 @@ int	get_highest_index(t_stack *stack)
 }
 
 // Find the target position in stack A for each element in stack B
-static int	get_target(t_stack **a, int b_idx, int target_idx, int target_pos)
+//takes the index of a element which we are 
+
+static int	get_target(t_stack **a, int b_idx)
 {
 	t_stack	*tmp_a;
+	int target_idx = INT_MAX;
+	int target_pos = 0;
 
 	tmp_a = *a;
 	while (tmp_a)
@@ -72,7 +76,7 @@ void	get_target_position(t_stack **a, t_stack **b)
 	get_position(b);
 	while (tmp_b)
 	{
-		target_pos = get_target(a, tmp_b->index, INT_MAX, 0);
+		target_pos = get_target(a, tmp_b->index);
 		tmp_b->target_pos = target_pos;
 		tmp_b = tmp_b->next;
 	}
