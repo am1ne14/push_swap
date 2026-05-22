@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   big_sort.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohel-am <mohel-am@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 16:20:45 by mohel-am          #+#    #+#             */
+/*   Updated: 2025/03/13 16:24:04 by mohel-am         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
+/*	
+ *	void	sort_big(t_stack **a, t_stack **b);
+ *	void    push_small_elements(t_stack **a, t_stack **b, int size);
+ *	void	sort_b_stack(t_stack **a, t_stack **b);
+ *	void	final_rotate(t_stack **a);
+ */
 
 void	sort_big(t_stack **a, t_stack **b)
 {
@@ -10,11 +28,6 @@ void	sort_big(t_stack **a, t_stack **b)
 	sort_b_stack(a, b);
 	final_rotate(a);
 }
-
-/*
-    takes the stack size and both stack every thing is on a, b is empty
-    
-*/
 
 void	push_small_elements(t_stack **a, t_stack **b, int size)
 {
@@ -48,7 +61,9 @@ void	sort_b_stack(t_stack **a, t_stack **b)
 {
 	while (*b)
 	{
- 		get_target_position(a, b);
+		get_position(a);
+		get_position(b);
+		get_target_position(a, b);
 		get_cost(a, b);
 		do_cheapest_move(a, b);
 	}
